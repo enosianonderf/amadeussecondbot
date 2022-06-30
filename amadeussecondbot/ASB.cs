@@ -2,12 +2,13 @@
 using Telegram.Bot.Args;
 using System;
 
+
 namespace amadeus2
 {
     class ASB
 // Токен и определение самого бота
     {
-        
+        public static int emo = 50;
         private static string token { get; set; } = "2008109914:AAFi-o9eFEgMaLO8k22F9Tmq4BmzwiROkLI";
         private static TelegramBotClient bot;
         static void Main(string[] args)
@@ -33,7 +34,20 @@ namespace amadeus2
                
                 if (lower.Contains("привет"))
                 {
-                    await bot.SendTextMessageAsync(msg.Chat.Id, "Здравствуйте.");
+                    await bot.SendPhotoAsync(
+                    chatId: msg.Chat.Id,
+                    photo: "https://github.com/enosianonderf/amadeussecondbot/blob/master/amadeussecondbot/amadeusemo/Kurisu/CRS_JLD_40000100.png?raw=true",
+                    caption: "Здравствуйте.");
+                }
+                if (lower.Contains("дура"))
+                {
+                    emo = emo - 20;
+                    await bot.SendPhotoAsync(
+                    chatId: msg.Chat.Id,
+                    photo: "https://github.com/enosianonderf/amadeussecondbot/blob/master/amadeussecondbot/amadeusemo/KurisuAngry/CRS_JLE_40000400.png?raw=true",
+                    caption: "Сам дурак!");
+
+
                 }
             }
         
