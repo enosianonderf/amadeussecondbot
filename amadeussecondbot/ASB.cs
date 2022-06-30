@@ -1,7 +1,5 @@
 ﻿using Telegram.Bot;
 using Telegram.Bot.Args;
-using System;
-
 
 namespace amadeus2
 {
@@ -13,12 +11,12 @@ namespace amadeus2
         private static TelegramBotClient bot;
         static void Main(string[] args)
         {
+            RandomAngry x = new RandomAngry();
             Console.WriteLine("Запуск бота...");
             
             bot = new TelegramBotClient(token);
             bot.OnMessage += BotOnOnMessage;
             bot.StartReceiving();
-            Console.WriteLine("Flex");
             Console.ReadLine();
             
         }
