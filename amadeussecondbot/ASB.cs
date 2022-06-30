@@ -30,8 +30,7 @@ namespace amadeus2
                 if(lower.Contains("кристин"))
                 {
                     await bot.SendTextMessageAsync(msg.Chat.Id, "Не называй меня Кристиной!");
-                }
-               
+                }              
                 if (lower.Contains("привет"))
                 {
                     await bot.SendPhotoAsync(
@@ -46,18 +45,8 @@ namespace amadeus2
                     chatId: msg.Chat.Id,
                     photo: "https://github.com/enosianonderf/amadeussecondbot/blob/master/amadeussecondbot/amadeusemo/KurisuAngry/CRS_JLE_40000400.png?raw=true",
                     caption: "Сам дурак!");
-
-
                 }
-            }
-        
-
-        }
-
-           
-          
-       
+            }        
+        }      
     }
-
-
 }
