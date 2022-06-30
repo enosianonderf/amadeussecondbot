@@ -18,7 +18,9 @@ namespace amadeus2
             bot = new TelegramBotClient(token);
             bot.OnMessage += BotOnOnMessage;
             bot.StartReceiving();
+            Console.WriteLine("Flex");
             Console.ReadLine();
+            
         }
         private static async void BotOnOnMessage(object? sender, MessageEventArgs e)
         {
