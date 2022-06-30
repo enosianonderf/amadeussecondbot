@@ -11,7 +11,8 @@ namespace amadeus2
         private static TelegramBotClient bot;
         static void Main(string[] args)
         {
-            RandomAngry x = new RandomAngry();
+            RandomAngry a = new RandomAngry();
+            RandomHappy h = new RandomHappy();
             Console.WriteLine("Запуск бота...");
             
             bot = new TelegramBotClient(token);
@@ -23,7 +24,8 @@ namespace amadeus2
         private static async void BotOnOnMessage(object? sender, MessageEventArgs e)
         {
             
-            RandomAngry x = new RandomAngry();
+            RandomAngry a = new RandomAngry();
+            RandomHappy h = new RandomHappy();
             var msg = e.Message;
             var lower = msg.Text.ToLower();
             if (msg.Text != null)
@@ -38,7 +40,7 @@ namespace amadeus2
                     await bot.SendPhotoAsync(
                     chatId: msg.Chat.Id,
                     parseMode: Telegram.Bot.Types.Enums.ParseMode.Html,
-                    photo: x.Randomization(),
+                    photo: a.AngryRandomization(),
                     caption: "Здравствуйте.");
                 }
                 if (lower.Contains("дура"))
@@ -48,6 +50,14 @@ namespace amadeus2
                     chatId: msg.Chat.Id,
                     photo: "https://github.com/enosianonderf/amadeussecondbot/blob/master/amadeussecondbot/amadeusemo/KurisuAngry/CRS_JLE_40000400.png?raw=true",
                     caption: "Сам дурак!");
+                }
+                if (lower.Contains("смеш"))
+                {
+                    emo = emo + 20;
+                    await bot.SendPhotoAsync(
+                    chatId: msg.Chat.Id,
+                    photo: h.HappyRandomization(),
+                    caption: "Хаха!");
                 }
             }        
         }      
