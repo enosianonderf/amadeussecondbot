@@ -22,6 +22,7 @@ namespace amadeus2
         }
         private static async void BotOnOnMessage(object? sender, MessageEventArgs e)
         {
+            
             RandomAngry x = new RandomAngry();
             var msg = e.Message;
             var lower = msg.Text.ToLower();
@@ -36,6 +37,7 @@ namespace amadeus2
                 {
                     await bot.SendPhotoAsync(
                     chatId: msg.Chat.Id,
+                    parseMode: Telegram.Bot.Types.Enums.ParseMode.Html,
                     photo: x.Randomization(),
                     caption: "Здравствуйте.");
                 }
