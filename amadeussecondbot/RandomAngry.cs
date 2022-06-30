@@ -13,7 +13,7 @@ namespace amadeus2 {
             "https://github.com/enosianonderf/amadeussecondbot/blob/master/amadeussecondbot/amadeusemo/KurisuAngry/CRS_JLE_40000402.png?raw=true%22%7D"
         };
 
-    string Randomization()
+    public string Randomization()
         {
             string str = AngryEmos[new Random().Next(0, AngryEmos.Length)];
             return str;

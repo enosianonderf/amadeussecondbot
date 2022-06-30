@@ -22,6 +22,7 @@ namespace amadeus2
         }
         private static async void BotOnOnMessage(object? sender, MessageEventArgs e)
         {
+            RandomAngry x = new RandomAngry();
             var msg = e.Message;
             var lower = msg.Text.ToLower();
             if (msg.Text != null)
@@ -35,7 +36,7 @@ namespace amadeus2
                 {
                     await bot.SendPhotoAsync(
                     chatId: msg.Chat.Id,
-                    photo: "https://github.com/enosianonderf/amadeussecondbot/blob/master/amadeussecondbot/amadeusemo/Kurisu/CRS_JLD_40000100.png?raw=true",
+                    photo: x.Randomization(),
                     caption: "Здравствуйте.");
                 }
                 if (lower.Contains("дура"))
