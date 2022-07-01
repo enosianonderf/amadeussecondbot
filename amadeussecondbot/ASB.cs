@@ -122,6 +122,14 @@ namespace amadeus2
                         photo: a.AngryRandomization(),
                         caption: "Не называй меня Кристиной!");
                 }
+                else if (lower.Contains("/start"))
+                {
+                    stream.Position = 0;
+                    emo = 20;
+                    await bot.SendPhotoAsync(chatId: msg.Chat.Id,
+                        photo: h.HappyRandomization(),
+                        caption: "Добро пожаловать, гость.");
+                }
                 else
                 {
                     stream.Position = 0;
