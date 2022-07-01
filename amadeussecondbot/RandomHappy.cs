@@ -12,7 +12,7 @@
 
         public string HappyRandomization()
         {
-            int randomNum = h.Next(0, 2);
+            int randomNum = h.Next(0, 3);
             string hapres = HappyEmos[randomNum];
             return hapres;
         }

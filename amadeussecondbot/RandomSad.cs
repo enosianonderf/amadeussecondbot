@@ -12,7 +12,7 @@
 
         public string SadRandomization()
         {
-            int randomNum = s.Next(0, 2);
+            int randomNum = s.Next(0, 3);
             string sadres = SadEmos[randomNum];
             return sadres;
         }

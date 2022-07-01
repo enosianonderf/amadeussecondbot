@@ -25,17 +25,18 @@ namespace amadeus2
             {   
                 Response = Client.DownloadString("http://test.vkgroup.az/");
                 if (Response != null)
-                {   
-
+                {
+                    DateTime snow = DateTime.Now;
                     Console.WriteLine("Запуск успешен! Бот находится в исправно-активном состоянии.");
-                    Console.WriteLine($"Бот запущен {now:R}");
+                    Console.WriteLine($"Бот запущен {snow:R}");
                 }
 
             }
             catch
             {
+                DateTime snow = DateTime.Now;
                 Console.WriteLine("Запуск бота провален.");
-                Console.WriteLine($"Бот не работает. Попробуйте подключиться позже. {now:R}");
+                Console.WriteLine($"Бот не работает. Попробуйте подключиться позже. {snow:R}");
             }
             
 
@@ -56,6 +57,7 @@ namespace amadeus2
             RandomSad s = new();
             RandomCry c = new();
             RandomNeu n = new();
+            RandomEmb emb = new();
             var msg = e.Message;
             var lower = msg.Text.ToLower();
 
@@ -71,8 +73,10 @@ namespace amadeus2
                     string emostatus = h.HappyRandomization();
                 }
                 */
+                
                 Console.WriteLine($"Введено : {msg.Text}");
                 if (lower.Contains("ты") && lower.Contains("бот"))
+                
                 {
                     stream.Position = 0;
                     emo = 30;
@@ -80,6 +84,7 @@ namespace amadeus2
                         photo: c.CryRandomization(),
                         caption: "За что вы так...");
                 }
+
                 else if (lower.Contains("прив"))
                 {
                     stream.Position = 0;
@@ -89,6 +94,7 @@ namespace amadeus2
                         photo: n.NeuRandomization(),
                         caption: "Здравствуйте.");
                 }
+
                 else if (lower.Contains("дура"))
                 {
                     stream.Position = 0;
@@ -97,6 +103,7 @@ namespace amadeus2
                         photo: a.AngryRandomization(),
                         caption: "Сам дурак!");
                 }
+                
                 else if (lower.Contains("смеш"))
                 {
                     stream.Position = 0;
@@ -105,6 +112,7 @@ namespace amadeus2
                         photo: h.HappyRandomization(),
                         caption: "Хаха!");
                 }
+
                 else if (lower.Contains("колобок"))
                 {
                     stream.Position = 0;
@@ -122,6 +130,16 @@ namespace amadeus2
                         photo: a.AngryRandomization(),
                         caption: "Не называй меня Кристиной!");
                 }
+                
+                else if (lower.Contains("ты") && (lower.Contains("ложк")))
+                {
+                    stream.Position = 0;
+                    emo = 20;
+                    await bot.SendPhotoAsync(chatId: msg.Chat.Id,
+                        photo: emb.EmbRandomization(),
+                        caption: "Т-ты про что?");
+                }
+
                 else if (lower.Contains("/start"))
                 {
                     stream.Position = 0;
@@ -130,6 +148,7 @@ namespace amadeus2
                         photo: h.HappyRandomization(),
                         caption: "Добро пожаловать, гость.");
                 }
+
                 else
                 {
                     stream.Position = 0;
