@@ -14,8 +14,7 @@ namespace amadeus2
         static void Main(string[] args)
         {
             
-            RandomAngry a = new RandomAngry();
-            RandomHappy h = new RandomHappy();
+           
 
             DateTime now = DateTime.Now;
             Console.WriteLine("Запуск бота...");
@@ -46,17 +45,20 @@ namespace amadeus2
             Console.ReadLine();
             
         }
-        
-        
+
+
 
         private static async void BotOnOnMessage(object? sender, MessageEventArgs e)
         {
             using var stream = new MemoryStream();
             RandomAngry a = new();
             RandomHappy h = new();
+            RandomSad s = new();
+            RandomCry c = new();
+            RandomNeu n = new();
             var msg = e.Message;
             var lower = msg.Text.ToLower();
-           
+
 
             if (msg.Text != null)
             {
@@ -70,20 +72,24 @@ namespace amadeus2
                 }
                 */
                 Console.WriteLine($"Введено : {msg.Text}");
-                if(lower.Contains("кристи"))
+                if (lower.Contains("ты") && lower.Contains("бот"))
                 {
-                    await bot.SendTextMessageAsync(msg.Chat.Id, "Не называй меня Кристиной!");
-                }              
-                if (lower.Contains("прив"))
+                    stream.Position = 0;
+                    emo = 30;
+                    await bot.SendPhotoAsync(chatId: msg.Chat.Id,
+                        photo: c.CryRandomization(),
+                        caption: "За что вы так...");
+                }
+                else if (lower.Contains("прив"))
                 {
                     stream.Position = 0;
                     emo = 30;
                     await bot.SendPhotoAsync(chatId: msg.Chat.Id,
                         parseMode: Telegram.Bot.Types.Enums.ParseMode.Html,
-                        photo: a.AngryRandomization(),
+                        photo: n.NeuRandomization(),
                         caption: "Здравствуйте.");
                 }
-                if (lower.Contains("дура"))
+                else if (lower.Contains("дура"))
                 {
                     stream.Position = 0;
                     emo = 20;
@@ -91,13 +97,38 @@ namespace amadeus2
                         photo: a.AngryRandomization(),
                         caption: "Сам дурак!");
                 }
-                if (lower.Contains("смеш"))
+                else if (lower.Contains("смеш"))
                 {
                     stream.Position = 0;
                     emo = 85;
                     await bot.SendPhotoAsync(chatId: msg.Chat.Id,
                         photo: h.HappyRandomization(),
                         caption: "Хаха!");
+                }
+                else if (lower.Contains("колобок"))
+                {
+                    stream.Position = 0;
+                    emo = 30;
+                    await bot.SendPhotoAsync(chatId: msg.Chat.Id,
+                        photo: s.SadRandomization(),
+                        caption: "Почему же он повесился...");
+                }
+                
+                else if (lower.Contains("кристи"))
+                {
+                    stream.Position = 0;
+                    emo = 20;
+                    await bot.SendPhotoAsync(chatId: msg.Chat.Id,
+                        photo: a.AngryRandomization(),
+                        caption: "Не называй меня Кристиной!");
+                }
+                else
+                {
+                    stream.Position = 0;
+                    emo = 50;
+                    await bot.SendPhotoAsync(chatId: msg.Chat.Id,
+                        photo: s.SadRandomization(),
+                        caption: "Извините, но я пока ещё не научилась отвечать на всё.");
                 }
             }        
         }      

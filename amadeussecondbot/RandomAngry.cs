@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Telegram.Bot;
-
-namespace amadeus2 {
+﻿namespace amadeus2 {
     public class RandomAngry
     {
         Random a = new Random();
@@ -17,7 +10,7 @@ namespace amadeus2 {
 
         public string AngryRandomization()
         {
-            int randomNum = a.Next(0, 2);
+            int randomNum = a.Next(0, 3);
             string str = AngryEmos[randomNum];
             return str;
         }
