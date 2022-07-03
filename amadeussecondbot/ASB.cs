@@ -52,10 +52,6 @@ namespace amadeus2
             bot = new TelegramBotClient(token);
             bot.OnMessage += BotOnOnMessage;
             bot.StartReceiving();
-            
-
-            
-
             Console.ReadLine();
             
         }
@@ -78,6 +74,7 @@ namespace amadeus2
             
             var msg = e.Message;
             var lower = msg.Text.ToLower();
+
             
             if (msg.Text != null)
             {
@@ -85,7 +82,7 @@ namespace amadeus2
 
                 string captionres = " ";
                 int rannum2 = rannum.Next(5, 10);
-                Console.WriteLine($"Введено : {msg.Text} от {msg.Chat.Id}");
+                Console.WriteLine($"Введено : {msg.Text}");
                 if (lower.Contains("ты") && lower.Contains("бот") && (rannum2 >= 5))
                 
                 {
@@ -114,14 +111,6 @@ namespace amadeus2
                     stream.Position = 0;
                     emo = 85;
                     captionres = "Хаха!";
-
-                }
-
-                else if (lower.Contains("амадей") || lower.Contains("курису") && (rannum2 >= 5))
-                {
-                    stream.Position = 0;
-                    emo = 76;
-                    captionres = "Это.. Моё имя.";
 
                 }
 
@@ -221,11 +210,9 @@ namespace amadeus2
                     emostatus = emb.EmbRandomization();
 
                 }
-                
                 await bot.SendPhotoAsync(chatId: msg.Chat.Id,
                         photo: emostatus,
                         caption: captionres);
-                
             }
         }      
     }
