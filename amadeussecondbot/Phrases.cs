@@ -2,7 +2,6 @@
 {
     public class phrases
     {
-        
         Random ph = new Random();
         string[] morningph = new string[]
         {
@@ -30,7 +29,6 @@
         };
         public string phrandom()
         {   
-
             DateTime now = DateTime.Now;
             string nowtime = $"{now:HH}";
             int v = (int)Convert.ToInt64(nowtime);
@@ -38,7 +36,7 @@
 
             if (jer >= 0 && jer <= 6)
             {
-                int randomNum = ph.Next(0, 2);
+                int randomNum = ph.Next(0, 3);
                 string phres = nightph[randomNum];
                 return phres;
 
@@ -46,7 +44,7 @@
 
             else if (jer >= 6 && jer <= 12)
             {
-                int randomNum = ph.Next(0, 2);
+                int randomNum = ph.Next(0, 3);
                 string phres = morningph[randomNum];
                 return phres;
 
@@ -54,7 +52,7 @@
 
             else if (jer >= 12 && jer <= 18)
             {
-                int randomNum = ph.Next(0, 2);
+                int randomNum = ph.Next(0, 3);
                 string phres = dayph[randomNum];
                 return phres;
 
@@ -62,21 +60,16 @@
 
             else if (jer >= 18 && jer <= 23)
             {
-                int randomNum = ph.Next(0, 2);
+                int randomNum = ph.Next(0, 3);
                 string phres = eveph[randomNum];
                 return phres;
 
             }
+
             else
             {
                 return "";
-            }
-
-            
-                
-            
-            
-           
+            }   
         }            
     }
 }
